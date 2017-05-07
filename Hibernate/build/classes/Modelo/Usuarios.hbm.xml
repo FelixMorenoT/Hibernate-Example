@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 7, 2017 4:44:49 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Usuarios" table="Usuarios" catalog="blog" optimistic-lock="version">
+        <id name="usuarioId" type="java.lang.Integer">
+            <column name="Usuario_id" />
+            <generator class="identity" />
+        </id>
+        <property name="nickUsuario" type="string">
+            <column name="Nick_Usuario" length="45" not-null="true" />
+        </property>
+        <property name="nombreUsuario" type="string">
+            <column name="Nombre_Usuario" length="45" not-null="true" />
+        </property>
+        <property name="apellidoUsuario" type="string">
+            <column name="Apellido_Usuario" length="45" not-null="true" />
+        </property>
+        <property name="numeroUsuario" type="string">
+            <column name="Numero_Usuario" length="45" not-null="true" />
+        </property>
+        <property name="correoUsuario" type="string">
+            <column name="Correo_Usuario" length="45" not-null="true" />
+        </property>
+        <property name="claveUsuario" type="string">
+            <column name="Clave_Usuario" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
