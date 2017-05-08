@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 7, 2017 4:44:49 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 8, 2017 10:51:19 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Modelo.Noticias" table="Noticias" catalog="blog" optimistic-lock="version">
+    <class name="Modelo.Noticias" table="Noticias" catalog="hibernateblog" optimistic-lock="version">
         <id name="noticiaId" type="java.lang.Integer">
             <column name="Noticia_id" />
             <generator class="identity" />
         </id>
+        <many-to-one name="usuarios" class="Modelo.Usuarios" fetch="select">
+            <column name="Usuario_Nick" length="45" not-null="true" />
+        </many-to-one>
         <property name="tituloNoticia" type="string">
             <column name="Titulo_Noticia" length="45" not-null="true" />
         </property>
@@ -16,9 +19,6 @@
         </property>
         <property name="fecha" type="timestamp">
             <column name="Fecha" length="19" not-null="true" />
-        </property>
-        <property name="usuarioId" type="int">
-            <column name="Usuario_id" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

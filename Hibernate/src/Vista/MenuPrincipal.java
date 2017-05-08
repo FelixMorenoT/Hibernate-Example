@@ -46,8 +46,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         newNoticia.setText("Crear Noticia");
+        newNoticia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newNoticiaActionPerformed(evt);
+            }
+        });
 
         listNoticias.setText("Noticias");
+        listNoticias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listNoticiasActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Menu Principal");
 
@@ -95,6 +105,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
          this.dispose();
     }//GEN-LAST:event_newUsuarioActionPerformed
 
+    private void newNoticiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newNoticiaActionPerformed
+        // TODO add your handling code here:
+        new InsertNews().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_newNoticiaActionPerformed
+
+    private void listNoticiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listNoticiasActionPerformed
+        // TODO add your handling code here:
+        new ListNoticias().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_listNoticiasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -120,6 +142,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

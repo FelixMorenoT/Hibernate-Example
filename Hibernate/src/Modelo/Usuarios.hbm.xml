@@ -1,16 +1,13 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 7, 2017 4:44:49 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 8, 2017 10:51:19 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Modelo.Usuarios" table="Usuarios" catalog="blog" optimistic-lock="version">
-        <id name="usuarioId" type="java.lang.Integer">
-            <column name="Usuario_id" />
-            <generator class="identity" />
+    <class name="Modelo.Usuarios" table="Usuarios" catalog="hibernateblog" optimistic-lock="version">
+        <id name="nickUsuario" type="string">
+            <column name="Nick_Usuario" length="45" />
+            <generator class="assigned" />
         </id>
-        <property name="nickUsuario" type="string">
-            <column name="Nick_Usuario" length="45" not-null="true" />
-        </property>
         <property name="nombreUsuario" type="string">
             <column name="Nombre_Usuario" length="45" not-null="true" />
         </property>
@@ -26,5 +23,11 @@
         <property name="claveUsuario" type="string">
             <column name="Clave_Usuario" length="45" not-null="true" />
         </property>
+        <set name="noticiases" table="Noticias" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Usuario_Nick" length="45" not-null="true" />
+            </key>
+            <one-to-many class="Modelo.Noticias" />
+        </set>
     </class>
 </hibernate-mapping>

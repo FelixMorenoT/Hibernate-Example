@@ -81,11 +81,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear Noticia"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newNoticiaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="listNoticias">
       <Properties>
         <Property name="text" type="java.lang.String" value="Noticias"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listNoticiasActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>

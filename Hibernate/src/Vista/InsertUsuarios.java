@@ -59,7 +59,7 @@ public class InsertUsuarios extends javax.swing.JFrame {
 
         jLabel1.setText("Creacion Nuevos Usuarios");
 
-        jLabel2.setText("Nickname");
+        jLabel2.setText("Usuario");
 
         jLabel3.setText("Nombre");
 
@@ -194,6 +194,12 @@ public class InsertUsuarios extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(InsertUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
