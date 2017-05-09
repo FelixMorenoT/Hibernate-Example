@@ -7,6 +7,10 @@ package Controlador;
 
 import Modelo.Noticias;
 import Modelo.Usuarios;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -58,4 +62,41 @@ public class Controlador {
 
     }
 
+    public DefaultListModel ShowNoticias() {
+        DefaultListModel AuxDLM = new DefaultListModel();
+
+        SessionFactory SessionFactory = NewHibernateUtil.getSessionFactory();
+        Session Session;
+
+        Session = SessionFactory.openSession();
+        Transaction tx = Session.beginTransaction();
+
+        Query Query = Session.createQuery("from Noticias");
+        List<Noticias> Consulta = Query.list();
+        Iterator<Noticias> ConsultaIterador = Consulta.iterator();
+
+        tx.commit();
+        Session.close();
+
+        while (ConsultaIterador.hasNext()) {
+            Noticias News = (Noticias) ConsultaIterador.next();
+            AuxDLM.addElement(News);
+        }
+        return AuxDLM;
+    }
+
+    public void DeleteNews(String User, String Titu) {
+        SessionFactory SessionFactory = NewHibernateUtil.getSessionFactory();
+        Session Session;
+
+        Session = SessionFactory.openSession();
+        Transaction tx = Session.beginTransaction();
+
+        Query Query = Session.createQuery("Delete Noticias where Titulo_Noticia='"+Titu+"' and Usuario_Nick='"+User+"'");
+ 
+        Query.executeUpdate();
+        tx.commit();
+        Session.close();
+        JOptionPane.showMessageDialog(null, "Noticia Eliminada");
+    }
 }

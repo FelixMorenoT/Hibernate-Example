@@ -7,6 +7,7 @@ package Vista;
 
 import Controlador.Controlador;
 import Modelo.Usuarios;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,7 +19,7 @@ public class InsertUsuarios extends javax.swing.JFrame {
      * Creates new form InsertUsuarios
      */
     Controlador Controlador;
-    
+
     public InsertUsuarios() {
         initComponents();
         Controlador = new Controlador();
@@ -49,6 +50,7 @@ public class InsertUsuarios extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         Clave = new javax.swing.JPasswordField();
         CrearUsuario = new javax.swing.JButton();
+        Regresar = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -84,6 +86,13 @@ public class InsertUsuarios extends javax.swing.JFrame {
             }
         });
 
+        Regresar.setText("Regresar");
+        Regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,19 +112,19 @@ public class InsertUsuarios extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Clave)
-                            .addComponent(Correo)
-                            .addComponent(Telefono)
-                            .addComponent(Apellido)
-                            .addComponent(Nombre)
-                            .addComponent(NickName))
-                        .addGap(69, 69, 69))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(CrearUsuario)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(Clave)
+                    .addComponent(Correo)
+                    .addComponent(Telefono)
+                    .addComponent(Apellido)
+                    .addComponent(Nombre)
+                    .addComponent(NickName))
+                .addGap(69, 69, 69))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CrearUsuario)
+                .addGap(18, 18, 18)
+                .addComponent(Regresar)
+                .addGap(104, 104, 104))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +156,9 @@ public class InsertUsuarios extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(Clave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(CrearUsuario)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CrearUsuario)
+                    .addComponent(Regresar))
                 .addGap(14, 14, 14))
         );
 
@@ -160,14 +171,25 @@ public class InsertUsuarios extends javax.swing.JFrame {
 
     private void CrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearUsuarioActionPerformed
         // TODO add your handling code here:
-        char[] key =Clave.getPassword();
+        char[] key = Clave.getPassword();
         String Password = new String(key);
-        
-        Usuarios newUser = new Usuarios(NickName.getText(),Nombre.getText(),Apellido.getText(),Telefono.getText(),Correo.getText(),Password);
-        Controlador.InsertUser(newUser);
+
+        if (NickName.getText().isEmpty() || Nombre.getText().isEmpty() || Apellido.getText().isEmpty() || Telefono.getText().isEmpty() || Correo.getText().isEmpty() || Password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos Vacios");
+
+        } else {
+            Usuarios newUser = new Usuarios(NickName.getText(), Nombre.getText(), Apellido.getText(), Telefono.getText(), Correo.getText(), Password);
+            Controlador.InsertUser(newUser);
+            new MenuPrincipal().setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_CrearUsuarioActionPerformed
+
+    private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
+        // TODO add your handling code here:
         new MenuPrincipal().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_CrearUsuarioActionPerformed
+    }//GEN-LAST:event_RegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,6 +240,7 @@ public class InsertUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton CrearUsuario;
     private javax.swing.JTextField NickName;
     private javax.swing.JTextField Nombre;
+    private javax.swing.JButton Regresar;
     private javax.swing.JTextField Telefono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -97,7 +97,9 @@ public class Usuarios implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "Usuarios{" + "nickUsuario=" + nickUsuario + ", nombreUsuario=" + nombreUsuario + ", apellidoUsuario=" + apellidoUsuario + ", numeroUsuario=" + numeroUsuario + ", correoUsuario=" + correoUsuario + ", claveUsuario=" + claveUsuario + ", noticiases=" + noticiases + '}';
+        return "Usuarios{" + "nickUsuario=" + nickUsuario + '}';
     }
+
+
 
 }

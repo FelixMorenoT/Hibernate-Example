@@ -66,7 +66,8 @@ public class Noticias implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "Noticias{" + "noticiaId=" + noticiaId + ", usuarios=" + usuarios + ", tituloNoticia=" + tituloNoticia + ", textoNoticia=" + textoNoticia + ", fecha=" + fecha + '}';
+        return "Noticias - "+" Usuario: "+usuarios.getNickUsuario()+ " ,Titulo: " + tituloNoticia + ", Descripcion: " + textoNoticia;
     }
 
+    
 }

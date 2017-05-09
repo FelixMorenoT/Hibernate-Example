@@ -20,6 +20,7 @@ public class InsertNews extends javax.swing.JFrame {
      * Creates new form InsertNews
      */
     Controlador Controlador;
+
     public InsertNews() {
         initComponents();
         Controlador = new Controlador();
@@ -46,6 +47,7 @@ public class InsertNews extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         CrearNoticia = new javax.swing.JButton();
         Fecha = new org.jdesktop.swingx.JXDatePicker();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,6 +75,13 @@ public class InsertNews extends javax.swing.JFrame {
         CrearNoticia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CrearNoticiaActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Regresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -104,12 +113,13 @@ public class InsertNews extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(182, 182, 182)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(CrearNoticia)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(CrearNoticia)
-                .addGap(158, 158, 158))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,8 +143,10 @@ public class InsertNews extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(CrearNoticia)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CrearNoticia)
+                    .addComponent(jButton1))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,13 +158,20 @@ public class InsertNews extends javax.swing.JFrame {
 
     private void CrearNoticiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearNoticiaActionPerformed
         // TODO add your handling code here:
+
         Usuarios buscador = Controlador.FindUser(UsuarioTxt.getText());
+
         Noticias noticias = new Noticias(buscador, Titulo.getText(), Descripcion.getText(), Fecha.getDate());
         Controlador.InsertNews(noticias);
- 
         new MenuPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_CrearNoticiaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new MenuPrincipal().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,6 +217,7 @@ public class InsertNews extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker Fecha;
     private javax.swing.JTextField Titulo;
     private javax.swing.JTextField UsuarioTxt;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
